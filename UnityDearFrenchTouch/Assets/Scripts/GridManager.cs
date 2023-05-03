@@ -1,28 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    public int width = 10;
-    public int height = 10;
+    public int width = 2;
+    public int height = 2;
     public GameObject casePrefab;
-    public Material defaultMaterial;
-    public Material hoverMaterial;
 
     private GameObject[,] cases;
-    private Renderer lastHoveredRenderer;
 
     void Start()
     {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
         cases = new GameObject[width, height];
+        Vector3 terrainPos = GameObject.Find("Terrain").transform.position;
 
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
-                GameObject newCase = Instantiate(casePrefab, new Vector3(i, 0, j), Quaternion.identity);
-                newCase.GetComponent<Renderer>().material = defaultMaterial;
+                Vector3 casePos = new Vector3(terrainPos.x + i, terrainPos.y, terrainPos.z + j);
+                GameObject newCase = Instantiate(casePrefab, casePos, Quaternion.identity);
                 cases[i, j] = newCase;
             }
         }
@@ -30,26 +31,6 @@ public class GridManager : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            Renderer renderer = hit.collider.GetComponent<Renderer>();
-            if (renderer != null)
-            {
-                if (lastHoveredRenderer != null)
-                {
-                    lastHoveredRenderer.material = defaultMaterial;
-                }
-                renderer.material = hoverMaterial;
-                lastHoveredRenderer = renderer;
-            }
-        }
-        else if (lastHoveredRenderer != null)
-        {
-            lastHoveredRenderer.material = defaultMaterial;
-            lastHoveredRenderer = null;
-        }
+        
     }
 }
