@@ -444,6 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridManagerPrefab: {fileID: 2415965591267336229, guid: 963fa0bce9790f24a81d1755c18ab989, type: 3}
+  buildManagerPrefab: {fileID: 3351642601617421623, guid: 9e8c16eba014fd845b103a2b1a65c12e, type: 3}
 --- !u!4 &1983297457
 Transform:
   m_ObjectHideFlags: 0
