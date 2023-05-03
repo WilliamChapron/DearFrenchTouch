@@ -57,6 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMaterial: {fileID: 2926557707537190794, guid: 028ba62dbb6ac5241bd37c90b248e98a, type: 3}
   hoverMaterial: {fileID: 8800564991649113109, guid: a31a51846967d5d49a287198adc2ab83, type: 3}
+  buildingManager: {fileID: 6811701338972870078, guid: 9e8c16eba014fd845b103a2b1a65c12e, type: 3}
 --- !u!23 &222572171118470242
 MeshRenderer:
   m_ObjectHideFlags: 0

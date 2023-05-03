@@ -1,27 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GridCase : MonoBehaviour
 {
     public Material defaultMaterial;
     public Material hoverMaterial;
-
     private Renderer renderer;
+    private BuildManager buildManager;
 
     void Start()
     {
         renderer = GetComponent<Renderer>();
-        base.renderer.material = defaultMaterial;
+        renderer.material = defaultMaterial;
+        buildManager = FindObjectOfType<BuildManager>();
     }
 
     void OnMouseEnter()
     {
-        base.renderer.material = hoverMaterial;
+        renderer.material = hoverMaterial;
     }
 
     void OnMouseExit()
     {
-        base.renderer.material = defaultMaterial;
+        renderer.material = defaultMaterial;
+    }
+
+    private void OnMouseDown()
+    {
+        buildManager.BuildBuilding(transform.position);
     }
 }
